@@ -1,0 +1,14 @@
+<!-- ルーティングヘルパーには、root_pathとroot_urlの2つのパターンがあります。
+     これらの使い分けとしては、ビューではpath、コントローラなどでリダイレクトする時にはurlを使います。-->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Attendance App", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Top", root_path %></li>
+        <li><%= link_to "Log in", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
