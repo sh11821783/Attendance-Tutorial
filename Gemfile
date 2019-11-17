@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '~> 5.1.6'
-gem 'bcrypt' # 今回追加するgemです
+gem 'bcrypt'
+gem 'faker' # このgemは実際に存在していそうな名前を生成してくれる便利なものです。
 gem 'bootstrap-sass'
+gem 'will_paginate' # 1ページあたりに表示するユーザーの件数を制限します。
+gem 'bootstrap-will_paginate' # ページネーションのデザインをお手軽に良くする。
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'

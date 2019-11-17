@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user # ログイン後にユーザー情報ページにリダイレクトします。
+      # 記述することで、一時的セッションに記憶しているURLがない場合は本来のページ遷移が実現できる仕組みです。
+      redirect_back_or user # 引数にuserを指定することで、デフォルト（初期値）のURLを設定しています。
     else
       # ここにはエラーメッセージ用のflashを入れます。
       flash.now[:danger] = '認証に失敗しました。'

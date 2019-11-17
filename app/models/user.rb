@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # 「remember_token」という仮装の属性を作成。
   attr_accessor :remember_token
   # 追加したコードでは、before_saveメソッドにブロック{ self.email = email.downcase }を渡してユーザーのメールアドレスを設定します。
-  # 現在のメールアドレス（self.email）の値をdowncaseメソッドを使って小文字に変換
+  # 現在のメールアドレス（self.email）の値をdowncaseメソッドを使って小文字に変換。
   # selfは、メソッドを呼び出している時点でのユーザーオブジェクトを指しています。
   before_save { self.email = email.downcase }
    # key :value 基本的にはハッシュ[設定したキー]でキーとセットになっているバリューを取り出すことができます。
@@ -15,7 +15,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true # 一意性(他に同じデータがない)の検証
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 } # 存在性（presence）と、最小文字数（6文字以上とする）の2つを設定
+  # 存在性（presence）と、最小文字数（6文字以上とする）の2つを設定
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true # パスワードはスルーして更新できるようにする。 
   
   # 渡された文字列のハッシュ値を返します。
   def User.digest(string)

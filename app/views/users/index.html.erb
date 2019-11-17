@@ -1,0 +1,32 @@
+<% provide(:title, 'All Users') %>
+<h1>ユーザー一覧</h1>
+
+<div class="col-md-10 col-md-offset-1">
+  <%= will_paginate %>
+  <table class="table table-condensed table-hover" id="table-users">
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name :name %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <!-- 下記ではユーザーを1件ずつ表示する必要があるため、eachメソッドを使っています。-->
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <!-- 削除を開始するためのボタンをユーザー一覧ページに追加。-->
+            <!-- 各ユーザーごとに表示されるようにします。-->
+            <!-- method: :delete:削除に必要なDELETEリクエストを発行するリンクの生成。-->
+            <%= link_to "削除", user, method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <!-- will_paginateという特殊なメソッドを呼び出すことでページネーションを挿入しています。-->
+  <%= will_paginate %>
+</div>
