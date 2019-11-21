@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '~> 5.1.6'
+gem 'rails-i18n' # このi18nの機能により手軽に日本語化対応も可能です。
 gem 'bcrypt'
 gem 'faker' # このgemは実際に存在していそうな名前を生成してくれる便利なものです。
 gem 'bootstrap-sass'
