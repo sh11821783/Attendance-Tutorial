@@ -13,7 +13,8 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |message_type, msg| %>
-        <div class="alert alert-<%= message_type %>"><%= msg %></div>
+        <!-- この実装により、エラーメッセージを配列の要素ごとに区切る際に指定した<br>がHTMLとして有効になり改行される仕組み -->
+        <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
       <% end %>
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>

@@ -14,8 +14,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 100 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true # 一意性(他に同じデータがない)の検証
+  validates :department, length: { in: 2..50 }, allow_blank: true # この設定では、値が空文字""の場合バリデーションをスルーします。
+  validates :basic_time, presence: true # 存在性の検証
+  validates :work_time, presence: true # 存在性の検証
   has_secure_password
-  # 存在性（presence）と、最小文字数（6文字以上とする）の2つを設定
+  # 存在性（presence）と、最小文字数（6文字以上とする）の2つを設定。
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true # パスワードはスルーして更新できるようにする。 
   
   # 渡された文字列のハッシュ値を返します。
