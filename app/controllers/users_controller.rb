@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info]
+  before_action :set_one_month, only: :show
   # Usersコントローラにリクエストが送信されると、
   # 下記のparams[:id]は/users/1の1に置き換わります。
   # つまり、User.find(params[:id])は、User.find(1)となります。
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
   end
   
   def show
+    # 「1ヶ月分の勤怠データの中で、出勤時間が何も無い状態では無いものの数を代入」
+    @worked_sum = @attendances.where.not(started_at: nil).count # countメソッドは配列の要素数を取得することができます。
   end
 
   def new

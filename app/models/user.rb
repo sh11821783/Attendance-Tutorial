@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  has_many :attendances, dependent: :destroy
   # 「remember_token」という仮装の属性を作成。
   attr_accessor :remember_token
   # 追加したコードでは、before_saveメソッドにブロック{ self.email = email.downcase }を渡してユーザーのメールアドレスを設定します。

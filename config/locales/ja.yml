@@ -40,7 +40,8 @@ ja:
     formats:
       default: "%Y/%m/%d"
       long: "%Y年%m月%d日(%a)"
-      short: "%m/%d"
+      middle: "%Y年%m月"
+      short: "%-m/%-d"
     month_names:
     - 
     - 1月
@@ -148,7 +149,7 @@ ja:
     currency:
       format:
         delimiter: ","
-        format: "%n%u"
+        format: "%u%n"
         precision: 0
         separator: "."
         significant: false
@@ -203,4 +204,5 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      time: "%H：%M"
     pm: 午後
